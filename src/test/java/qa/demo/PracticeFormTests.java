@@ -12,13 +12,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class PracticeFormTests {
-
-    @BeforeAll
-    static void setUp() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = true;
-    }
     File picture = new File("src/test/resources/picture.jpg");
     String name = "Ivan";
     String surname = "Ivanov";
@@ -31,6 +24,13 @@ public class PracticeFormTests {
     String address = "Current Address";
     String state = "NCR";
     String city = "Delhi";
+
+    @BeforeAll
+    static void setUp() {
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = "1920x1080";
+        Configuration.holdBrowserOpen = true;
+    }
 
     @Test
     void authorizationFormTest() {
@@ -64,7 +64,5 @@ public class PracticeFormTests {
         $(".table-responsive table").shouldHave(Condition.text("picture.jpg"));
         $(".table-responsive table").shouldHave(Condition.text(address));
         $(".table-responsive table").shouldHave(Condition.text(state + " " + city));
-
-
     }
 }

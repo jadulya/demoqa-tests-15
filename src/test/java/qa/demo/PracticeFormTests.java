@@ -1,12 +1,12 @@
 package qa.demo;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -16,6 +16,7 @@ public class PracticeFormTests {
     String name = "Ivan";
     String surname = "Ivanov";
     String email = "name@example.com";
+    String gender = "Male";
     String phone = "9876543210";
     String day = "11";
     String month = "November";
@@ -38,7 +39,7 @@ public class PracticeFormTests {
         $("#firstName").setValue(name);
         $("#lastName").setValue(surname);
         $("#userEmail").setValue(email);
-        $("#gender-radio-1 + label").click();
+        $("[value=" + gender+ "] + label").click();
         $("#userNumber").setValue(phone);
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").selectOption(month);
@@ -54,15 +55,9 @@ public class PracticeFormTests {
         $("#city").$(byText(city)).click();
         $("#submit").click();
 
-        $(".table-responsive table").shouldHave(Condition.text(name + " " + surname));
-        $(".table-responsive table").shouldHave(Condition.text(email));
-        $(".table-responsive table").shouldHave(Condition.text("Male"));
-        $(".table-responsive table").shouldHave(Condition.text(phone));
-        $(".table-responsive table").shouldHave(Condition.text(day+" " + month + "," + year));
-        $(".table-responsive table").shouldHave(Condition.text(subject));
-        $(".table-responsive table").shouldHave(Condition.text("Sports"));
-        $(".table-responsive table").shouldHave(Condition.text("picture.jpg"));
-        $(".table-responsive table").shouldHave(Condition.text(address));
-        $(".table-responsive table").shouldHave(Condition.text(state + " " + city));
+        $(".table-responsive table").shouldHave(text(name + " " + surname), text(email),
+                text(gender), (text(phone)), text(day+" " + month + "," + year), text(subject),
+                text("Sports"), text("picture.jpg"),text(address), text(state + " " + city));
+
     }
 }

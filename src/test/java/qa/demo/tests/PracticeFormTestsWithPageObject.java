@@ -26,7 +26,7 @@ public class PracticeFormTestsWithPageObject {
                 .setBirthDate("11", "November", "1995")
                 .setSubjects("Biology")
                 .setHobbies("Sports")
-                .uploadPicture("src/test/resources/picture.jp")
+                .uploadPicture("src/test/resources/picture.jpg")
                 .setAddress("Current Address")
                 .setState("NCR")
                 .setCity("Delhi")

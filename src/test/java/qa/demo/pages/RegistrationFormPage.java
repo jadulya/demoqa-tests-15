@@ -88,7 +88,7 @@ public class RegistrationFormPage {
 
     public RegistrationFormPage setState (String state){
         stateInput.click();
-        subjectsInput.$(byText(state)).click();
+        stateInput.$(byText(state)).click();
         return this;
     }
 

@@ -14,12 +14,12 @@ public class ResultModal {
             modalHeader = $(".modal-header");
 
     public ResultModal checkResult(String key, String value) {
-        $(resultTable).$(byText(key)).parent().lastChild().shouldHave(text(value));
+        resultTable.$(byText(key)).parent().lastChild().shouldHave(text(value));
         return this;
     }
 
     public ResultModal checkResultsVisible() {
-        $(modalHeader).shouldHave(text(TITLE_TEXT));
+        modalHeader.shouldHave(text(TITLE_TEXT));
         return this;
     }
 }
